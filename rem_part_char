@@ -1,0 +1,24 @@
+bag_content=[]
+print("УДАЛИТЬ ЧАСТИ ТЕКСТА ДО СИМВОЛА!!!!")
+file_content=[string.strip('\n') for string in open("BASE.txt",mode="r",encoding="utf-8").readlines()]
+type_remove=int(input("Введите 1 или 2\n 1 - удаление с начала строки(буквы до символа)\n 2 - удаление с конца строки(буквы после символа):\n"))
+part_char=input("Введите символ  для удаления:\n")
+try:
+    if type_remove==1:
+        for string in file_content:
+            if part_char in string:
+             bag_content.append(string.split(part_char)[1])
+    else:
+        for string in file_content:
+            if part_char in string:
+             bag_content.append(string.split(part_char)[0])
+
+    file=open("BASE.txt",mode="w",encoding="utf-8")
+    for item in bag_content:
+        file.write(item+"\n")
+    print(bag_content)
+    file.close()
+    input("Выполнено!")
+except Exception as e:
+    print("ошибка:код ошибки ниже")
+    print(e)
