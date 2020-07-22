@@ -13,4 +13,5 @@ file=open("BASE.txt",mode="w",encoding="utf-8")
 for item in bag_content:
     file.write(item+"\n")
 print(bag_content)
-print("Выполнено")
+file.close()
+input("Выполнено!")
