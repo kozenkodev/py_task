@@ -1,7 +1,7 @@
 try:
     donor_base=[string.strip('\n') for string in open("donor.txt",mode="r",encoding="utf-8").readlines()]
     your_chat_base=[string.strip('\n') for string in open("mychat.txt",mode="r",encoding="utf-8").readlines()]
-    result=donor_base-your_chat_base
+    result=set(donor_base)-set(your_chat_base)
     f=open("result.txt",mode="w",encoding="utf-8")
     for item in result:
         f.write(item+"\n")
