@@ -1,0 +1,11 @@
+try:
+    rasdel=input("Укажите символ разделителя:\n")
+    base_strings=[string.split(rasdel)[1].strip('\n')+rasdel+string.split(rasdel)[0] for string in open("BASE.txt",mode="r",encoding="utf-8").readlines()]
+    file=open("BASE.txt",mode="w",encoding="utf-8")
+    for string in base_strings:
+      file.write(string+"\n")
+    file.close()
+    input("Замена завершена")
+except Exception as e:
+    print(e)
+    input("обнаружена ошибка проверьте файл")
