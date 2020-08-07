@@ -1,0 +1,33 @@
+import os
+list_directories=[]
+file=open(os.getcwd()+"\BASE\Accounts",mode="r",encoding="utf-8",errors="ignore")
+accounts= file.readlines()
+file.close()
+
+for item in os.listdir(os.getcwd()):
+    if os.path.isdir(item) and item!="BASE":
+        list_directories.append(item)
+proportion=int(len(accounts)/len(list_directories))
+print(proportion)
+for item in list_directories:
+    counter=0
+    f=open(os.getcwd()+"\\"+item+"\Accounts",mode="w",encoding="utf-8")
+    for i in accounts[0:proportion]:
+        if counter<proportion:
+            try:
+             f.write(i)
+             print(i.strip("\n"))
+             counter=counter+1
+             accounts.remove(i)
+            except Exception as e:
+                print(e)
+        else:
+            break
+
+
+    f.close()
+try:
+ os.remove(os.getcwd()+"\BASE\Accounts")
+except Exception as e:
+ print(e)
+input("Замена и разбивка окончена!")
